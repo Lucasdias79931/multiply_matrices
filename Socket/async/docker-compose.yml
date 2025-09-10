@@ -1,0 +1,7 @@
+services:
+  matrix-server:
+    build: .
+    container_name: matrix_server
+    ports:
+      - "5000:5000" 
+    restart: unless-stopped

@@ -8,6 +8,10 @@ import asyncio
 from Server_base import ServerBase
 
 class ServerAsync(ServerBase):
+    def __init__(self, port: int):
+        self.host = ServerAsync.get_local_ip()
+        super().__init__( port)
+
     async def handle_client(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         addr = writer.get_extra_info('peername')
         print(f"[+] New connection from {addr}")
@@ -68,7 +72,7 @@ class ServerAsync(ServerBase):
         await writer.drain()
 
 if __name__ == "__main__":
-    server = ServerAsync("172.17.0.1", 5000)
+    server = ServerAsync(port=5000)
     try:
         asyncio.run(server.connect())
     except KeyboardInterrupt:

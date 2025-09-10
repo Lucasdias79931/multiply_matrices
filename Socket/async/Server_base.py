@@ -3,15 +3,30 @@ import os
 import pickle
 import struct
 import traceback
-
+import socket
 from Utils import Utils
 from abc import ABC, abstractmethod
 
 
 class ServerBase(ABC):
-    def __init__(self, host: str, port: int):
-        self.host = host
+    def __init__(self,port: int):
+        self.host = None
         self.port = port
+
+
+    
+
+    @staticmethod
+    def get_local_ip():
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        try:
+            s.connect(("8.8.8.8", 80))
+            ip = s.getsockname()[0]
+        except Exception:
+            ip = "127.0.0.1"
+        finally:
+            s.close()
+        return ip
 
     @abstractmethod
     def connect(self):
