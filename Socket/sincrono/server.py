@@ -2,10 +2,9 @@ import sys
 import socket
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 from Utils import Utils
-from Socket.Server_base import ServerBase
+from Server_base import ServerBase
 
 
 import socket
