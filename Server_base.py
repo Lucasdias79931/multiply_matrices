@@ -14,10 +14,11 @@ class ServerBase(ABC):
         self.port = port
 
     @abstractmethod
-    def conect(self):
+    def connect(self):
         """Must be implemented by subclasses (sync/async)."""
         pass
-
+    
+    @abstractmethod
     def escalarM(self, conn):
         """
         Receive a pickled payload (4-byte length header + payload),

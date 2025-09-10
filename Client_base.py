@@ -17,6 +17,9 @@ class Client_base(ABC):
     def send_line_column(self, line: list, column: list):
         pass
 
-
+    @abstractmethod
+    def multiply_matrices(self, MatrizA, MatrizB):
+        """Multiply two matrices using this client"""
+        pass
 
 

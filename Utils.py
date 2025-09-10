@@ -1,4 +1,5 @@
-class Utils:
+from abc import ABC, abstractmethod
+class Utils(ABC):
     
     """
         This class provides basic methods to split a column from a matrix
@@ -36,7 +37,7 @@ class Utils:
         return column
 
         
-
+    
 if __name__ == "__main__":
     MatrixA = [[1,2,3],
                [4,5,6],
