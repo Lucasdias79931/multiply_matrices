@@ -41,6 +41,7 @@ class AsyncClient(Client_base):
     
     async def multiply_matrices(self, MatrizA, MatrizB):
         MatrizC = []
+        
         for i in range(len(MatrizA)):
             tasks = []
             for j in range(len(MatrizB[0])):
@@ -53,8 +54,8 @@ class AsyncClient(Client_base):
 if __name__ == "__main__":
     client = AsyncClient("172.17.0.1", 5000)
     
-    MatrizA = [[i*2 for i in range(10)] for _ in range(10)]
-    MatrizB = [[i for i in range(10)] for _ in range(10)]
+    MatrizA = [[i*2 for i in range(1000)] for _ in range(1000)]
+    MatrizB = [[i for i in range(1000)] for _ in range(1000)]
 
     MatrizC = asyncio.run(client.multiply_matrices(MatrizA, MatrizB))
 

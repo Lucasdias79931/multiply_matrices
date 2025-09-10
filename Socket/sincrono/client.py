@@ -9,7 +9,7 @@ from Client_base import Client_base
 
 
 class Client(Client_base):
-
+    
     def send_line_column(self, line: list, column: list):
         """
         Send line and column to the server, receive response dict:
@@ -49,29 +49,35 @@ class Client(Client_base):
                 # raise error with message from server
                 raise ValueError(f"Server error: {response.get('message')}")
 
+    def multiply_matrices(self, MatrizA, MatrizB):
+        MatrizC = []
+
+        for i in range(len(MatrizA)):
+            results = []
+            for j in range(len(MatrizB[0])):
+                columnB = Utils.getColumn(MatrizB, j)
+                try:
+                    result = self.send_line_column(MatrizA[i], columnB) 
+                except Exception:
+                    result = None
+                results.append(result)
+            MatrizC.append(results)
+            
+            
+
+        return MatrizC
 
 if __name__ == "__main__":
 
     from Utils import Utils
-    client = Client("172.17.0.1", 5000)
+    client = Client("192.168.1.160", 5000)
 
     MatrizA = [[i*2 for i in range(10)] for _ in range(10)]
     
     MatrizB = [[i for i in range(10)] for _ in range(10)]
-    MatrizC = []
+    MatrizC = client.multiply_matrices(MatrizA, MatrizB)
 
-    for i in range(len(MatrizA)):
-        newLineC = []
-        for j in range(len(MatrizB[0])):
-            columnB = Utils.getColumn(MatrizB, j)
-            try:
-                result = client.send_line_column(MatrizA[i], columnB)
-                newLineC.append(result)
-            except ValueError as e:
-                print(f"[!] Error computing A[{i}] x B_column[{j}]: {e}")
-                newLineC.append(None)  
-        MatrizC.append(newLineC)
-
-    # print result matrix
+   
+   
     for line in MatrizC:
         print(line)
