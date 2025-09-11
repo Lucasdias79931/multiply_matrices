@@ -15,7 +15,7 @@ class Utils(ABC):
 
 
     @staticmethod
-    def escalarMultiply(line: list, column:list) -> int:
+    def scalarMultiply(line: list, column:list) -> int:
         sum = 0
 
         for i in range(len(line)):

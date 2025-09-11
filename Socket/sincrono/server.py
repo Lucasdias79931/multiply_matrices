@@ -50,7 +50,7 @@ class ServerSync(ServerBase):
             # deserialize payload
             try:
                 payload = pickle.loads(data)
-                # support either (line, column) tuple/list or {"line":..., "column":...}
+                
                 if isinstance(payload, dict) and 'line' in payload and 'column' in payload:
                     line = payload['line']
                     column = payload['column']
@@ -63,7 +63,7 @@ class ServerSync(ServerBase):
                 self._send_response(conn, resp)
                 return
 
-            # validate sizes explicitly
+            #
             if not isinstance(line, (list, tuple)) or not isinstance(column, (list, tuple)):
                 resp = {'status': 'error', 'message': 'line and column must be lists or tuples'}
                 self._send_response(conn, resp)
@@ -74,18 +74,18 @@ class ServerSync(ServerBase):
                 self._send_response(conn, resp)
                 return
 
-            # compute dot product (rely on Utils)
+            
             try:
-                result = Utils.escalarMultiply(line, column)
+                result = Utils.scalarMultiply(line, column)
                 resp = {'status': 'ok', 'result': result}
             except Exception as e:
                 resp = {'status': 'error', 'message': str(e)}
 
-            # send response
+            
             self._send_response(conn, resp)
 
         except Exception as e:
-            # unexpected error: try to respond and log
+            
             print(f"[!] Unexpected error in escalarM: {e}")
             traceback.print_exc()
             try:

@@ -55,7 +55,7 @@ class ServerAsync(ServerBase):
                 raise ValueError(f"Incompatible sizes: line={len(line)}, column={len(column)}")
 
             # Compute dot product
-            result = Utils.escalarMultiply(line, column)
+            result = Utils.scalarMultiply(line, column)
             resp = {'status': 'ok', 'result': result}
 
         except Exception as e:
