@@ -26,7 +26,7 @@ class Client(Client_base):
             # receive 4-byte header
             raw_msglen = s.recv(4)
             if not raw_msglen:
-                raise ConnectionError("Server closed the connection.")
+                raise  ("Server closed the connection.")
             msglen = struct.unpack('>I', raw_msglen)[0]
 
             # receive response body
