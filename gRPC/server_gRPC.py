@@ -12,6 +12,9 @@ from Utils import Utils
 class MatrixServiceServicer(matrix_pb2_grpc.MatrixServiceServicer):
     def Multiply(self, request, context):
         try:
+            peer = context.peer()
+            print(f"Received request from: {peer}")
+
             line = list(request.line)
             column = list(request.column)
 

@@ -6,7 +6,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
 from Client_base import Client_base
-
+from Utils import Utils
 
 class Client(Client_base):
     
@@ -70,7 +70,7 @@ class Client(Client_base):
 if __name__ == "__main__":
 
     from Utils import Utils
-    client = Client("192.168.1.160", 5000)
+    client = Client("172.17.0.1", 5000)
 
     MatrizA = [[i*2 for i in range(10)] for _ in range(10)]
     
