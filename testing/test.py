@@ -26,8 +26,8 @@ from gRPC.client_gRPC import GRPCClient
 
 
 Cliets = {
-    "Socket Sincrono": SyncClient("172.17.0.1", 5000),
-    "Socket Assincrono": AsyncClient("172.17.0.1", 5001),
+    "Socket Sincrono": SyncClient("0.0.0.0", 5000),
+    "Socket Assincrono": AsyncClient("0.0.0.0", 5001),
     "gRPC": GRPCClient()
 }
 

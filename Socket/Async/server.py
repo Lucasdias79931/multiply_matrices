@@ -69,7 +69,7 @@ class ServerAsync(ServerBase):
         await writer.drain()
 
 if __name__ == "__main__":
-    server = ServerAsync("172.17.0.1", 5001)
+    server = ServerAsync("0.0.0.0", 5001)
     try:
         asyncio.run(server.connect())
     except KeyboardInterrupt:

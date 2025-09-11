@@ -93,5 +93,5 @@ class ServerSync(ServerBase):
             except Exception:
                 pass
 if __name__ == "__main__":
-    server = ServerSync("172.17.0.1", 5000)
+    server = ServerSync("0.0.0.0", 5001)
     server.connect()
