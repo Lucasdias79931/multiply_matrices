@@ -26,7 +26,7 @@ class MatrixServiceServicer(matrix_pb2_grpc.MatrixServiceServicer):
 
         except Exception as e:
             return matrix_pb2.Result(status="error", message=str(e))
-        
+    
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     matrix_pb2_grpc.add_MatrixServiceServicer_to_server(MatrixServiceServicer(), server)

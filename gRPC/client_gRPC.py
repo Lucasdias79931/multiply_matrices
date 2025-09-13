@@ -32,7 +32,7 @@ class GRPCClient(Client_base):
             MatrizC.append(row)
         return MatrizC
     
-
+    
 
 
 if __name__ == "__main__":
