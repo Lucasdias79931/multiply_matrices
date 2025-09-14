@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package matrix;
+
+message LineColumn {
+    repeated int32 line = 1;
+    repeated int32 column = 2;
+}
+
+// result message
+message Result {
+    string status = 1; // "ok" or "error"
+    int32 value = 2;
+    string message = 3; // error message
+}
+
+// service to expose a remote method
+service MatrixService {
+    rpc Multiply(LineColumn) returns (Result);
+}

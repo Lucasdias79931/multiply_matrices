@@ -1,0 +1,24 @@
+services:
+  grpc_server:
+    build:
+      context: .
+      dockerfile: gRPC/Dockerfile
+    container_name: grpc_server
+    ports:
+      - "50051:50051"
+  
+  socket_sync_server:
+    build:
+      context: .
+      dockerfile: Socket/sincrono/Dockerfile
+    container_name: socket_sync_server
+    ports:
+      - "5001:5001"
+  
+  socket_async_server:
+    build:
+      context: .
+      dockerfile: Socket/Async/Dockerfile
+    container_name: socket_async_server
+    ports:
+      - "5002:5002"
